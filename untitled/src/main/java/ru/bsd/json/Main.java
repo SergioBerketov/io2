@@ -1,3 +1,5 @@
+package ru.bsd.json;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -6,14 +8,14 @@ public class Main {
 
     protected static String[] products = {"Хлеб", "Молоко", "Колбаса"};
     protected static int[] prices = {30, 50, 100};
-    protected static File basketFile = new File("basket.txt");
+    protected static File saveFile = new File("basket.json");
 
     public static void main(String[] args) throws IOException {
 
         Basket basket = null;
 
-        if (basketFile.exists()) {
-            basket = Basket.loadFromTxtFile(basketFile);
+        if (saveFile.exists()) {
+            basket = Basket.loadFromJsonFile(saveFile);
         } else {
             basket = new Basket(products, prices);
         }
@@ -37,9 +39,12 @@ public class Main {
             int numberOfProduct = Integer.parseInt(pieces[0]) - 1;
             int amountOfProduct = Integer.parseInt(pieces[1]);
             basket.addToCard(numberOfProduct, amountOfProduct);
+            ClientLog.log(numberOfProduct, amountOfProduct);
         }
 
         basket.printCart();
-        basket.saveTxt(new File(basketFile.toURI()));
+//        basket.saveTxt(new File(basketTxtFile.toURI()));
+        basket.saveToJSON(new File(saveFile.toURI()));
+        ClientLog.exportAsCSV(new File("csvLog.xml"));
     }
 }

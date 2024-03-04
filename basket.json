@@ -1,0 +1,23 @@
+{
+  "products": [
+    "Хлеб",
+    "Молоко",
+    "Колбаса"
+  ],
+  "prices": [
+    30,
+    50,
+    100
+  ],
+  "productCounter": [
+    2,
+    3,
+    15
+  ],
+  "allCategoriesCost": [
+    60,
+    150,
+    1500
+  ],
+  "totalPrice": 1710
+}
